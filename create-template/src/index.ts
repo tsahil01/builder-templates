@@ -55,8 +55,8 @@ function readProjectFiles(filePaths: string[]): ProjectFile[] {
   return filePaths.map(filePath => {
     try {
       const content = fs.readFileSync(filePath, 'utf-8');
-      // Convert absolute paths to relative for better portability
-      const relativePath = path.relative(process.cwd(), filePath);
+      // We dont need relative paths for the files
+      const relativePath = path.relative(path.join(__dirname, '../'), filePath);
       return {
         filePath: relativePath.replace(/\\/g, '/'), // Normalize path separators
         content
@@ -88,7 +88,7 @@ npm install
 npm run dev
 </boltAction>`;
 
-  return `export const basePrompt = \`<boltArtifact id="project-import" title="Project Files">${boltActions}
+  return `export const basePrompt = \`<boltArtifact id="project-import" title="React + ShadCN + Framer Motion Project">${boltActions}
 ${shellCommands}
 </boltArtifact>\`;`;
 }

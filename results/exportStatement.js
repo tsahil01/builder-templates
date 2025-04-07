@@ -1,4 +1,4 @@
-export const basePrompt = `<boltArtifact id="project-import" title="Project Files"><boltAction type="file" filePath="../reactJS/components.json">{
+export const basePrompt = `<boltArtifact id="project-import" title="React + ShadCN + Framer Motion Project"><boltAction type="file" filePath="components.json">{
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",
   "rsc": false,
@@ -19,7 +19,7 @@ export const basePrompt = `<boltArtifact id="project-import" title="Project File
   },
   "iconLibrary": "lucide"
 }</boltAction>
-<boltAction type="file" filePath="../reactJS/eslint.config.js">import js from '@eslint/js'
+<boltAction type="file" filePath="eslint.config.js">import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
@@ -48,7 +48,7 @@ export default tseslint.config(
   },
 )
 </boltAction>
-<boltAction type="file" filePath="../reactJS/index.html"><!doctype html>
+<boltAction type="file" filePath="index.html"><!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -62,7 +62,7 @@ export default tseslint.config(
   </body>
 </html>
 </boltAction>
-<boltAction type="file" filePath="../reactJS/package.json">{
+<boltAction type="file" filePath="package.json">{
   "name": "reactjs",
   "private": true,
   "version": "0.0.0",
@@ -77,9 +77,11 @@ export default tseslint.config(
     "@radix-ui/react-slot": "^1.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.6.3",
     "lucide-react": "^0.487.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^7.5.0",
     "tailwind-merge": "^3.2.0",
     "tailwindcss-animate": "^1.0.7"
   },
@@ -102,14 +104,14 @@ export default tseslint.config(
   }
 }
 </boltAction>
-<boltAction type="file" filePath="../reactJS/postcss.config.js">export default {
+<boltAction type="file" filePath="postcss.config.js">export default {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
   },
 }
 </boltAction>
-<boltAction type="file" filePath="../reactJS/src/App.tsx">import { Button } from "@/components/ui/button";
+<boltAction type="file" filePath="src/App.tsx">import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 
@@ -136,7 +138,7 @@ export default function Home() {
   );
 }
 </boltAction>
-<boltAction type="file" filePath="../reactJS/src/components/ui/button.tsx">import * as React from "react"
+<boltAction type="file" filePath="src/components/ui/button.tsx">import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 
@@ -194,7 +196,7 @@ Button.displayName = "Button"
 
 export { Button, buttonVariants }
 </boltAction>
-<boltAction type="file" filePath="../reactJS/src/components/ui/card.tsx">import * as React from "react"
+<boltAction type="file" filePath="src/components/ui/card.tsx">import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -271,7 +273,7 @@ CardFooter.displayName = "CardFooter"
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 </boltAction>
-<boltAction type="file" filePath="../reactJS/src/index.css">@tailwind base;
+<boltAction type="file" filePath="src/index.css">@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -339,14 +341,14 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
     @apply bg-background text-foreground;
   }
 }</boltAction>
-<boltAction type="file" filePath="../reactJS/src/lib/utils.ts">import { clsx, type ClassValue } from "clsx"
+<boltAction type="file" filePath="src/lib/utils.ts">import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 </boltAction>
-<boltAction type="file" filePath="../reactJS/src/main.tsx">import { StrictMode } from 'react'
+<boltAction type="file" filePath="src/main.tsx">import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
@@ -357,9 +359,9 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 </boltAction>
-<boltAction type="file" filePath="../reactJS/src/vite-env.d.ts">/// <reference types="vite/client" />
+<boltAction type="file" filePath="src/vite-env.d.ts">/// <reference types="vite/client" />
 </boltAction>
-<boltAction type="file" filePath="../reactJS/tailwind.config.js">/** @type {import('tailwindcss').Config} */
+<boltAction type="file" filePath="tailwind.config.js">/** @type {import('tailwindcss').Config} */
 export default {
     darkMode: ["class"],
     content: [
@@ -419,7 +421,7 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 }</boltAction>
-<boltAction type="file" filePath="../reactJS/tsconfig.app.json">{
+<boltAction type="file" filePath="tsconfig.app.json">{
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2020",
@@ -453,7 +455,7 @@ export default {
   "include": ["src"]
 }
 </boltAction>
-<boltAction type="file" filePath="../reactJS/tsconfig.json">{
+<boltAction type="file" filePath="tsconfig.json">{
   "files": [],
   "references": [
     {
@@ -471,7 +473,7 @@ export default {
   }
 }
 </boltAction>
-<boltAction type="file" filePath="../reactJS/tsconfig.node.json">{
+<boltAction type="file" filePath="tsconfig.node.json">{
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "target": "ES2022",
@@ -496,7 +498,7 @@ export default {
   "include": ["vite.config.ts"]
 }
 </boltAction>
-<boltAction type="file" filePath="../reactJS/vite.config.ts">import path from "path"
+<boltAction type="file" filePath="vite.config.ts">import path from "path"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
