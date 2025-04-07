@@ -38,7 +38,7 @@ const path = __importStar(require("path"));
 /**
  * Recursively scans directory for files matching extensions
  */
-function scanDirectory(directory, extensions = ['.js', '.jsx', '.ts', '.tsx', '.css', '.json', '.html'], ignore = ['node_modules', '.git', '.next', 'out', 'dist', 'build', 'package-lock.json']) {
+function scanDirectory(directory, extensions = ['.js', '.jsx', '.ts', '.tsx', '.css', '.json', '.html'], ignore = ['node_modules', '.git', '.next', 'out', 'dist', 'build', 'package-lock.json', '.gitignore']) {
     const files = [];
     if (!fs.existsSync(directory)) {
         console.error(`Directory does not exist: ${directory}`);
@@ -58,11 +58,7 @@ function scanDirectory(directory, extensions = ['.js', '.jsx', '.ts', '.tsx', '.
             files.push(...subFiles);
         }
         else {
-            // Check if file has an extension we're interested in
-            const ext = path.extname(item);
-            if (extensions.includes(ext)) {
-                files.push(itemPath);
-            }
+            files.push(itemPath);
         }
     }
     return files;
@@ -105,7 +101,7 @@ npm install
 <boltAction type="shell">
 npm run dev
 </boltAction>`;
-    return `export const baseReactPrompt = \`<boltArtifact id="project-import" title="Project Files">${boltActions}
+    return `export const basePrompt = \`<boltArtifact id="project-import" title="Project Files">${boltActions}
 ${shellCommands}
 </boltArtifact>\`;`;
 }
@@ -126,7 +122,7 @@ function analyzeNextJsProject(projectPath) {
         };
         const exportStatement = generateExport(projectStructure);
         // Write the result to a file
-        const outputPath = path.join(process.cwd(), 'project-export.ts');
+        const outputPath = path.join("../results", 'exportStatement.js');
         fs.writeFileSync(outputPath, exportStatement);
         console.log(`Export statement successfully written to: ${outputPath}`);
     }
@@ -134,6 +130,6 @@ function analyzeNextJsProject(projectPath) {
         console.error('Error analyzing project:', error);
     }
 }
-const projectPath = '../templates/nextjs-template';
+const projectPath = '/home/sahil/coding/builder-templates/nextJS14';
 // Run the analyzer
 analyzeNextJsProject(projectPath);

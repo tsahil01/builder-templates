@@ -124,7 +124,7 @@ function analyzeNextJsProject(projectPath: string): void {
   }
 }
 
-const projectPath = '/home/sahil/coding/nextJSTemplate/my-app'
+const projectPath = '/home/sahil/coding/builder-templates/nextJS14'
 
 // Run the analyzer
 analyzeNextJsProject(projectPath);
