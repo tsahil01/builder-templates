@@ -130,6 +130,6 @@ function analyzeNextJsProject(projectPath) {
         console.error('Error analyzing project:', error);
     }
 }
-const projectPath = '/home/sahil/coding/builder-templates/nextJS14';
+const projectPath = '../reactJS';
 // Run the analyzer
 analyzeNextJsProject(projectPath);
