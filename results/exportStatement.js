@@ -68,22 +68,60 @@ export default tseslint.config(
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "kill-port 3000 && vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.1.2",
+    "@hookform/resolvers": "^5.0.1",
+    "@radix-ui/react-accordion": "^1.2.8",
+    "@radix-ui/react-alert-dialog": "^1.1.11",
+    "@radix-ui/react-aspect-ratio": "^1.1.4",
+    "@radix-ui/react-avatar": "^1.1.7",
+    "@radix-ui/react-checkbox": "^1.2.3",
+    "@radix-ui/react-collapsible": "^1.1.8",
+    "@radix-ui/react-context-menu": "^2.2.12",
+    "@radix-ui/react-dialog": "^1.1.11",
+    "@radix-ui/react-dropdown-menu": "^2.1.12",
+    "@radix-ui/react-hover-card": "^1.1.11",
+    "@radix-ui/react-label": "^2.1.4",
+    "@radix-ui/react-menubar": "^1.1.12",
+    "@radix-ui/react-navigation-menu": "^1.2.10",
+    "@radix-ui/react-popover": "^1.1.11",
+    "@radix-ui/react-progress": "^1.1.4",
+    "@radix-ui/react-radio-group": "^1.3.4",
+    "@radix-ui/react-scroll-area": "^1.2.6",
+    "@radix-ui/react-select": "^2.2.2",
+    "@radix-ui/react-separator": "^1.1.4",
+    "@radix-ui/react-slider": "^1.3.2",
+    "@radix-ui/react-slot": "^1.2.0",
+    "@radix-ui/react-switch": "^1.2.2",
+    "@radix-ui/react-tabs": "^1.1.9",
+    "@radix-ui/react-toggle": "^1.1.6",
+    "@radix-ui/react-toggle-group": "^1.1.7",
+    "@radix-ui/react-tooltip": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "date-fns": "^4.1.0",
+    "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.6.3",
+    "input-otp": "^1.4.2",
     "lucide-react": "^0.487.0",
+    "next-themes": "^0.4.6",
     "react": "^19.0.0",
+    "react-day-picker": "^8.10.1",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.56.1",
+    "react-resizable-panels": "^2.1.8",
     "react-router-dom": "^7.5.0",
+    "recharts": "^2.15.3",
+    "sonner": "^2.0.3",
     "tailwind-merge": "^3.2.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vaul": "^1.1.2",
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
@@ -111,168 +149,20 @@ export default tseslint.config(
   },
 }
 </boltAction>
-<boltAction type="file" filePath="src/App.tsx">import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
+<boltAction type="file" filePath="src/App.tsx">import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
-export default function Home() {
+export default function App() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4 bg-zinc-800">
-      <Card className="w-full max-w-3xl rounded-2xl shadow-lg border border-zinc-700 bg-zinc-900 p-8">
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-            Welcome to Our React.js Template
-          </h1>
-          <p className="mt-4 text-lg text-zinc-400">
-            Start building your app with clean UI and solid foundations.
-          </p>
-        </div>
-
-        <div className="flex justify-center">
-          <Button size="lg" className="gap-2" variant={'secondary'}>
-            Get Started <ArrowRight size={20} />
-          </Button>
-        </div>
-      </Card>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={< Home />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
-}
-</boltAction>
-<boltAction type="file" filePath="src/components/ui/button.tsx">import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-
-import { cn } from "@/lib/utils"
-
-const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
-  {
-    variants: {
-      variant: {
-        default:
-          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-      },
-      size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8",
-        icon: "h-9 w-9",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
-
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean
-}
-
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Button.displayName = "Button"
-
-export { Button, buttonVariants }
-</boltAction>
-<boltAction type="file" filePath="src/components/ui/card.tsx">import * as React from "react"
-
-import { cn } from "@/lib/utils"
-
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "rounded-xl border bg-card text-card-foreground shadow",
-      className
-    )}
-    {...props}
-  />
-))
-Card.displayName = "Card"
-
-const CardHeader = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
-    {...props}
-  />
-))
-CardHeader.displayName = "CardHeader"
-
-const CardTitle = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("font-semibold leading-none tracking-tight", className)}
-    {...props}
-  />
-))
-CardTitle.displayName = "CardTitle"
-
-const CardDescription = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
-))
-CardDescription.displayName = "CardDescription"
-
-const CardContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
-))
-CardContent.displayName = "CardContent"
-
-const CardFooter = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
-    {...props}
-  />
-))
-CardFooter.displayName = "CardFooter"
-
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
-</boltAction>
+}</boltAction>
 <boltAction type="file" filePath="src/index.css">@tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -304,7 +194,15 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem
-  }
+  ;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%}
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -330,7 +228,15 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%
-  }
+  ;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%}
 }
 
 @layer base {
@@ -359,6 +265,64 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 </boltAction>
+<boltAction type="file" filePath="src/pages/Home.tsx">import { useState } from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+
+export default function MinimalHomepage() {
+    const [count, setCount] = useState(0);
+
+    const features = [{
+        title: 'Feature One',
+        description: 'Enhance your workflow',
+    }, {
+        title: 'Feature Two',
+        description: 'Maximize productivity',
+    }, {
+        title: 'Feature Three',
+        description: 'Simplify development',
+    }];
+
+    return (
+        <div className="flex flex-col items-center justify-center min-h-screen bg-white p-4">
+            <main className="w-full max-w-4xl mx-auto">
+                <div className="space-y-8">
+                    <div className="text-center space-y-4">
+                        <h1 className="text-4xl font-bold tracking-tight">Welcome to Our Platform</h1>
+                        <p className="text-lg text-gray-600">A clean, minimal design for your next project</p>
+                        <div className="flex justify-center gap-4">
+                            <Button>Get Started</Button>
+                            <Button variant="outline">Learn More</Button>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                        {features.map((feature, index) => (
+                            <Card key={index} className="bg-white shadow-md">
+                                <CardHeader>
+                                    <CardTitle>{feature.title}</CardTitle>
+                                    <CardDescription>{feature.description}</CardDescription>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-gray-600">This component uses shadcn/ui Card with a clean white background.</p>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </div>
+                    <Card className="mt-12">
+                        <CardHeader>
+                            <CardTitle>Interactive Component</CardTitle>
+                            <CardDescription>Try clicking the button below</CardDescription>
+                        </CardHeader>
+                        <CardContent className="flex flex-col items-center gap-4">
+                            <p className="text-2xl font-bold">{count}</p>
+                            <Button onClick={() => setCount(count + 1)}>Increment</Button>
+                        </CardContent>
+                    </Card>
+                </div>
+            </main>
+        </div>
+    );
+}</boltAction>
 <boltAction type="file" filePath="src/vite-env.d.ts">/// <reference types="vite/client" />
 </boltAction>
 <boltAction type="file" filePath="tailwind.config.js">/** @type {import('tailwindcss').Config} */
@@ -415,7 +379,39 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			sidebar: {
+  				DEFAULT: 'hsl(var(--sidebar-background))',
+  				foreground: 'hsl(var(--sidebar-foreground))',
+  				primary: 'hsl(var(--sidebar-primary))',
+  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  				accent: 'hsl(var(--sidebar-accent))',
+  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  				border: 'hsl(var(--sidebar-border))',
+  				ring: 'hsl(var(--sidebar-ring))'
   			}
+  		},
+  		keyframes: {
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
   		}
   	}
   },
@@ -509,6 +505,12 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  server: {
+    host: true,
+    allowedHosts: true,
+    port: 3000,
+    strictPort: true,
   },
 })
 </boltAction>
