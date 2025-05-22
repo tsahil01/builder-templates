@@ -16,7 +16,7 @@ interface ProjectStructure {
 function scanDirectory(
   directory: string,
   extensions: string[] = ['.js', '.jsx', '.ts', '.tsx', '.css', '.json', '.html', '.md'],
-  ignore: string[] = ['node_modules', '.git', '.next', 'out', 'dist', 'build', 'package-lock.json', '.gitignore', 'tsconfig.tsbuildinfo', 'README.md', 'favicon.ico', 'file.svg']
+  ignore: string[] = ['node_modules', '.git', '.next', 'out', 'dist', 'build', 'package-lock.json', '.gitignore', 'tsconfig.tsbuildinfo', 'README.md', 'favicon.ico', 'file.svg', 'ui']
 ): string[] {
   const files: string[] = [];
 
