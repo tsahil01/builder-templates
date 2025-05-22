@@ -27,7 +27,7 @@ WORKDIR /app
 
 # Clone the repository and copy ReactJS folder to /app
 RUN git clone https://github.com/tsahil01/builder-templates && \
-    cp -r builder-templates/reactJS/* /app/ && \
+    cp -r builder-templates/NextJS/* /app/ && \
     rm -rf builder-templates
 
 # Verify installations
