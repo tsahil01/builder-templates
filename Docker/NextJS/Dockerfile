@@ -22,15 +22,12 @@ RUN curl -fsSL https://deb.nodesource.com/setup_23.x | bash - \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install kill-port globally
-RUN npm install -g kill-port
-
 # Set working directory
 WORKDIR /app
 
 # Clone the repository and copy ReactJS folder to /app
 RUN git clone https://github.com/tsahil01/buildx-templates && \
-    cp -r buildx-templates/reactJS/* /app/ && \
+    cp -r buildx-templates/nextJS/* /app/ && \
     rm -rf buildx-templates
 
 # Verify installations
