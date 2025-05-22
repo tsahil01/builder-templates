@@ -29,9 +29,9 @@ RUN npm install -g kill-port
 WORKDIR /app
 
 # Clone the repository and copy ReactJS folder to /app
-RUN git clone https://github.com/tsahil01/buildx-templates && \
-    cp -r buildx-templates/reactJS/* /app/ && \
-    rm -rf buildx-templates
+RUN git clone https://github.com/tsahil01/builder-templates && \
+    cp -r builder-templates/reactJS/* /app/ && \
+    rm -rf builder-templates
 
 # Verify installations
 RUN node --version && \
