@@ -15,8 +15,8 @@ interface ProjectStructure {
  */
 function scanDirectory(
   directory: string,
-  extensions: string[] = ['.js', '.jsx', '.ts', '.tsx', '.css', '.json', '.html'],
-  ignore: string[] = ['node_modules', '.git', '.next', 'out', 'dist', 'build', 'package-lock.json', '.gitignore', 'tsconfig.tsbuildinfo']
+  extensions: string[] = ['.js', '.jsx', '.ts', '.tsx', '.css', '.json', '.html', '.md'],
+  ignore: string[] = ['node_modules', '.git', '.next', 'out', 'dist', 'build', 'package-lock.json', '.gitignore', 'tsconfig.tsbuildinfo', 'README.md', 'favicon.ico', 'file.svg']
 ): string[] {
   const files: string[] = [];
 
@@ -124,7 +124,7 @@ function analyzeNextJsProject(projectPath: string): void {
   }
 }
 
-const projectPath = '../reactJS'
+const projectPath = '../next-js'
 
 // Run the analyzer
 analyzeNextJsProject(projectPath);

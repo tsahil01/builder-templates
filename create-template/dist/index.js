@@ -38,7 +38,7 @@ const path = __importStar(require("path"));
 /**
  * Recursively scans directory for files matching extensions
  */
-function scanDirectory(directory, extensions = ['.js', '.jsx', '.ts', '.tsx', '.css', '.json', '.html'], ignore = ['node_modules', '.git', '.next', 'out', 'dist', 'build', 'package-lock.json', '.gitignore', 'tsconfig.tsbuildinfo']) {
+function scanDirectory(directory, extensions = ['.js', '.jsx', '.ts', '.tsx', '.css', '.json', '.html', '.md'], ignore = ['node_modules', '.git', '.next', 'out', 'dist', 'build', 'package-lock.json', '.gitignore', 'tsconfig.tsbuildinfo', 'README.md', 'favicon.ico', 'file.svg']) {
     const files = [];
     if (!fs.existsSync(directory)) {
         console.error(`Directory does not exist: ${directory}`);
@@ -130,6 +130,6 @@ function analyzeNextJsProject(projectPath) {
         console.error('Error analyzing project:', error);
     }
 }
-const projectPath = '../reactJS';
+const projectPath = '../next-js';
 // Run the analyzer
 analyzeNextJsProject(projectPath);
