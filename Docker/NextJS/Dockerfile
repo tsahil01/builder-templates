@@ -25,10 +25,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_23.x | bash - \
 # Set working directory
 WORKDIR /app
 
-# Clone the repository and copy ReactJS folder to /app
-RUN git clone https://github.com/tsahil01/builder-templates && \
-    cp -r builder-templates/NextJS/* /app/ && \
-    rm -rf builder-templates
+# Clone the repository and copy NextJS folder to /app
+RUN git clone https://github.com/tsahil01/buildx-templates && \
+    cp -r buildx-templates/next-js/* /app/ && \
+    rm -rf buildx-templates
 
 # Verify installations
 RUN node --version && \
