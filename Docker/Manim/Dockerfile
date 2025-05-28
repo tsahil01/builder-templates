@@ -56,11 +56,11 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /app
 
-# Upgrade pip and install Python dependencies
-RUN python -m pip install --upgrade pip setuptools wheel
+# Install Manim and comprehensive math/science packages directly
+# (skip upgrading system packages to avoid conflicts)
 
 # Install Manim and comprehensive math/science packages
-RUN pip install \
+RUN pip install --break-system-packages \
     manim \
     manim[jupyterlab] \
     numpy \
