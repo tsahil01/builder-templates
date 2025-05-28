@@ -17,18 +17,17 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python 3.11 and pip
+# Install Python 3 and pip (using default Ubuntu version)
 RUN apt-get update && apt-get install -y \
-    python3.11 \
-    python3.11-pip \
-    python3.11-venv \
-    python3.11-dev \
+    python3 \
+    python3-pip \
+    python3-venv \
+    python3-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Create symlinks for python and pip
-RUN ln -sf /usr/bin/python3.11 /usr/bin/python && \
-    ln -sf /usr/bin/python3.11 /usr/bin/python3
+RUN ln -sf /usr/bin/python3 /usr/bin/python
 
 # Install system dependencies for Manim
 RUN apt-get update && apt-get install -y \
