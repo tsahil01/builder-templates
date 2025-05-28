@@ -115,5 +115,8 @@ RUN python --version && \
 ENV MANIM_LOG_LEVEL=INFO
 ENV MANIM_VERBOSITY=INFO
 
-# Default command
-CMD ["/bin/bash"]
+# Expose port 8000
+EXPOSE 8000
+
+# Default command - run Python web server on port 8000 from root
+CMD ["python", "-m", "http.server", "8000", "--directory", "/"]
